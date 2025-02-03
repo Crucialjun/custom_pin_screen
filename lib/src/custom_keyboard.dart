@@ -159,17 +159,15 @@ class _CustomKeyBoardState extends State<CustomKeyBoard> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: widget.padding),
-        child: Column(
-          children: [
-            Expanded(child: buildNumberRow([1, 2, 3])),
-            Expanded(child: buildNumberRow([4, 5, 6])),
-            Expanded(child: buildNumberRow([7, 8, 9])),
-            Expanded(child: buildSpecialRow()),
-          ],
-        ),
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: widget.padding),
+      child: Column(
+        children: [
+          Expanded(child: buildNumberRow([1, 2, 3])),
+          Expanded(child: buildNumberRow([4, 5, 6])),
+          Expanded(child: buildNumberRow([7, 8, 9])),
+          Expanded(child: buildSpecialRow()),
+        ],
       ),
     );
   }

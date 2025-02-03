@@ -150,13 +150,16 @@ class _WalletScreenState extends State<WalletScreen> {
             ),
           ),
           const SizedBox(height: 80),
-          CustomKeyBoard(
-            controller: controller,
-            pinTheme: PinTheme(
-              textColor: Colors.red,
-              keysColor: Colors.blue,
+          Expanded(
+            child: CustomKeyBoard(
+              padding: 0,
+              controller: controller,
+              pinTheme: PinTheme(
+                textColor: Colors.red,
+                keysColor: Colors.blue,
+              ),
+              maxLength: 4,
             ),
-            maxLength: 4,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
