@@ -29,6 +29,8 @@ class CustomKeyBoard extends StatefulWidget {
 
   final TextStyle? keysTextStyle;
 
+  final double padding;
+
   const CustomKeyBoard(
       {Key? key,
       required this.maxLength,
@@ -38,6 +40,7 @@ class CustomKeyBoard extends StatefulWidget {
       this.onChanged,
       this.specialKeyOnTap,
       this.onCompleted,
+      this.padding = 30,
       required this.controller,
       this.keysTextStyle = const TextStyle(
         fontSize: 22,
@@ -158,7 +161,7 @@ class _CustomKeyBoardState extends State<CustomKeyBoard> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
+        padding: EdgeInsets.symmetric(horizontal: widget.padding),
         child: Column(
           children: [
             buildNumberRow([1, 2, 3]),
