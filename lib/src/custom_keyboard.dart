@@ -164,10 +164,10 @@ class _CustomKeyBoardState extends State<CustomKeyBoard> {
         padding: EdgeInsets.symmetric(horizontal: widget.padding),
         child: Column(
           children: [
-            buildNumberRow([1, 2, 3]),
-            buildNumberRow([4, 5, 6]),
-            buildNumberRow([7, 8, 9]),
-            buildSpecialRow(),
+            Expanded(child: buildNumberRow([1, 2, 3])),
+            Expanded(child: buildNumberRow([4, 5, 6])),
+            Expanded(child: buildNumberRow([7, 8, 9])),
+            Expanded(child: buildSpecialRow()),
           ],
         ),
       ),
