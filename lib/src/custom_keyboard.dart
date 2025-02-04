@@ -67,11 +67,10 @@ class _CustomKeyBoardState extends State<CustomKeyBoard> {
       }
     }
 
-    return Expanded(
-        child: CupertinoButton(
-            key: icon?.key ?? Key("btn$number"),
-            onPressed: onPressed,
-            child: getChild()));
+    return CupertinoButton(
+        key: icon?.key ?? Key("btn$number"),
+        onPressed: onPressed,
+        child: getChild());
   }
 
   Widget buildNumberRow(List<int> numbers) {
@@ -92,68 +91,65 @@ class _CustomKeyBoardState extends State<CustomKeyBoard> {
               },
             ))
         .toList();
-    return Expanded(
-        child: Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: buttonList,
-    ));
+    );
   }
 
   Widget buildSpecialRow() {
-    return Expanded(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          buildNumberButton(
-            icon: widget.specialKey ??
-                Icon(
-                  Icons.circle,
-                  key: const Key('specialKey'),
-                  color: widget.pinTheme.keysColor,
-                  size: 7,
-                ),
-            onPressed: widget.specialKeyOnTap ??
-                () {
-                  if (widget.controller.text.length < widget.maxLength) {
-                    if (!widget.controller.text.contains(".")) {
-                      widget.controller.text = widget.controller.text + ".";
-                    }
-                  }
-                  widget.onChanged?.call(widget.controller.text);
-                  if (widget.controller.text.length >= widget.maxLength) {
-                    widget.onCompleted?.call(widget.controller.text);
-                  }
-                },
-          ),
-          buildNumberButton(
-            number: 0,
-            onPressed: () {
-              if (widget.controller.text.length < widget.maxLength) {
-                widget.controller.text = widget.controller.text + 0.toString();
-              }
-              widget.onChanged?.call(widget.controller.text);
-              if (widget.controller.text.length >= widget.maxLength) {
-                widget.onCompleted?.call(widget.controller.text);
-              }
-            },
-          ),
-          buildNumberButton(
-              icon: Icon(
-                widget.backKeyIcon ?? Icons.backspace,
-                key: const Key('backspace'),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        buildNumberButton(
+          icon: widget.specialKey ??
+              Icon(
+                Icons.circle,
+                key: const Key('specialKey'),
                 color: widget.pinTheme.keysColor,
+                size: 7,
               ),
-              onPressed: () {
-                if (widget.controller.text.isNotEmpty) {
-                  widget.controller.text = widget.controller.text
-                      .substring(0, widget.controller.text.length - 1);
+          onPressed: widget.specialKeyOnTap ??
+              () {
+                if (widget.controller.text.length < widget.maxLength) {
+                  if (!widget.controller.text.contains(".")) {
+                    widget.controller.text = widget.controller.text + ".";
+                  }
                 }
                 widget.onChanged?.call(widget.controller.text);
-              }),
-        ],
-      ),
+                if (widget.controller.text.length >= widget.maxLength) {
+                  widget.onCompleted?.call(widget.controller.text);
+                }
+              },
+        ),
+        buildNumberButton(
+          number: 0,
+          onPressed: () {
+            if (widget.controller.text.length < widget.maxLength) {
+              widget.controller.text = widget.controller.text + 0.toString();
+            }
+            widget.onChanged?.call(widget.controller.text);
+            if (widget.controller.text.length >= widget.maxLength) {
+              widget.onCompleted?.call(widget.controller.text);
+            }
+          },
+        ),
+        buildNumberButton(
+            icon: Icon(
+              widget.backKeyIcon ?? Icons.backspace,
+              key: const Key('backspace'),
+              color: widget.pinTheme.keysColor,
+            ),
+            onPressed: () {
+              if (widget.controller.text.isNotEmpty) {
+                widget.controller.text = widget.controller.text
+                    .substring(0, widget.controller.text.length - 1);
+              }
+              widget.onChanged?.call(widget.controller.text);
+            }),
+      ],
     );
   }
 

@@ -264,21 +264,23 @@ class _PinAuthScreenState extends State<PinAuthScreen> {
               ],
             ),
             const SizedBox(height: 80),
-            CustomKeyBoard(
-              controller: controller,
-              pinTheme: pinTheme,
-              specialKey: Icon(
-                Icons.fingerprint,
-                key: const Key('fingerprint'),
-                color: pinTheme.keysColor,
-                size: 50,
+            Expanded(
+              child: CustomKeyBoard(
+                controller: controller,
+                pinTheme: pinTheme,
+                specialKey: Icon(
+                  Icons.fingerprint,
+                  key: const Key('fingerprint'),
+                  color: pinTheme.keysColor,
+                  size: 50,
+                ),
+                specialKeyOnTap: () {
+                  if (kDebugMode) {
+                    print('fingerprint');
+                  }
+                },
+                maxLength: 4,
               ),
-              specialKeyOnTap: () {
-                if (kDebugMode) {
-                  print('fingerprint');
-                }
-              },
-              maxLength: 4,
             ),
             TextButton(
               onPressed: () {
