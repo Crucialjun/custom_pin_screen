@@ -167,4 +167,10 @@ class _CustomKeyBoardState extends State<CustomKeyBoard> {
       ),
     );
   }
+
+  @override
+  dispose() {
+    widget.controller.dispose();
+    super.dispose();
+  }
 }
